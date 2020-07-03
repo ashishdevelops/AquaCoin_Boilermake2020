@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="/static/css/materialize.min.css" media="screen,projection" />
+    <link rel="stylesheet" type="text/css" href="/static/css/main.css">
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+    <div class="row">
+        <div class="col s2 snav">
+            <img src="/static/industry.svg" class="snav-ind">
+            <p class="snav-name">{{username}}</p>
+            <a class="waves-effect waves-light btn snav-coins ag"><img src="/static/logo.png" class="left snav-btn-logo">&nbsp&nbsp&nbsp&nbsp<span id="blnce"></span></a>
+            <a class="waves-effect waves-light btn snav-btn ag modal-trigger" href="#sell"><img src="/static/sell.svg" class="left snav-btn-logo">Post Ad</a>
+            <a class="waves-effect waves-light btn snav-btn ag modal-trigger" href="#settings"><img src="/static/settings.svg" class="left snav-btn-logo">Settings</a>
+            <a class="waves-effect waves-light btn snav-btn ag" href="/logout/"><img src="/static/logout.svg" class="left snav-btn-logo">Log Out</a>
+            <div class="snav-bottom">
+                <hr style="width: 80%; border-color: rgb(100,122,154)">
+                <span class="ag">AQUACOIN</span>
+            </div>
+        </div>
+        <div class="col s2"></div>
+        <div class="col s10 mn-area">
+            <table class="mn-table highlight">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Aquacoins</th>
+                        <th>Item Price</th>
+                        <th>Purchase</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for transaction in transactions.each() %}
+                    <tr id="{{transaction.key()}}">
+                        <td>{{database.child("USERS").child(transaction.val()["seller"]).get().val()["name"]}}</td>
+                        <td>{{transaction.val()["count"]}}</td>
+                        <td>${{transaction.val()["price"]}}</td>
+                        <td><a class="waves-effect waves-light btn mn-btn modal-trigger" href="#{{transaction.key()}}"><i class="material-icons left">add_shopping_cart</i></a></td>
+                    </tr>
+                    <div id="{{transaction.key()}}" class="modal" style="width: 50%">
+                        <div class="modal-content">
+                            <h4 class="ag" style="text-align: center; font-size: 250%;">PURCHASE</h4>
+                            <hr><br>
+                            <div class="row" >
+                                <div class="col s12">
+                                    <div class="row">
+                                        <div class="input-field col s6">
+                                            <input value="{{transaction.key()}}" hidden="True" class="validate" name="data">
+                                        </div>
+                                        <center>
+                                            <button class="btn waves-effect waves-light mn-btn" name="action" onclick="sendMoney({{transaction.val()["count"]}}, '{{database.child("USERS").child(transaction.val()["seller"]).get().val()["walletAddress"]}}','{{fromAddress}}', '{{transaction.key()}}')" style="width: 100%; text-align: center; font-size: 100%;">CONFIRM
+                                            </button></center>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- Modal Structure -->
+    <div id="sell" class="modal" style="width: 50%">
+        <div class="modal-content">
+            <h4 class="ag" style="text-align: center; font-size: 250%;">REQUEST AQUACOIN</h4>
+            <hr><br>
+            <div class="row">
+                <form method="POST" action = "/sell/" class="col s12">
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input placeholder="Number of aquacoins" id="aquacoin" type="number" min="0" class="validate" name="count">
+                            <label for="aquacoin">Aquacoins</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input placeholder="Amount in dollars" id="buck" type="number" min="0" class="validate" name="price">
+                            <label for="buck">Price</label>
+                        </div>
+                        <center>
+                            <button class="btn waves-effect waves-light mn-btn" type="submit" name="action" style="width: 100%; text-align: center; font-size: 100%;">POST ADVERTISMENT
+                            </button></center>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="settings" class="modal" style="width: 50%">
+        <div class="modal-content">
+            <h4 class="ag" style="text-align: center; font-size: 250%;">WALLET SETTINGS</h4>
+            <hr><br>
+            <div class="row">
+                <form method="POST" action = "/settings" class="col s12">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input placeholder="Wallet Address" id="address" class="validate" name="address">
+                        </div>
+
+                        <center>
+                            <button class="btn waves-effect waves-light mn-btn" type="submit" name="action" style="width: 100%; text-align: center; font-size: 100%;">UPDATE ADDRESS
+                            </button></center>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--JavaScript at end of body for optimized loading-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/js/materialize.min.js"></script>
+    <script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.modal');
+        var instances = M.Modal.init(elems, options);
+    });
+
+    // Or with jQuery
+
+    $(document).ready(function() {
+        $('.modal').modal();
+    });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/babel-polyfill/dist/polyfill.min.js"></script>
+    <script type="text/javascript" src="/static/js/web3.min.js"></script>
+    <script type="text/javascript" src="/static/js/coinTransfer.js"></script>
+
+    <script type="text/javascript">
+    $(document).ready(function() {
+      var web3 = new Web3(Web3.givenProvider);
+      let tokenAddress = "0xab0ed64d89446981b2a07e9789e9520e46a5e01a";
+      let fromAddress = "{{fromAddress}}";
+
+      let minABI = [
+          // transfer
+          {
+              "constant": false,
+              "inputs": [{
+                      "name": "_to",
+                      "type": "address"
+                  },
+                  {
+                      "name": "_value",
+                      "type": "uint256"
+                  }
+              ],
+              "name": "transfer",
+              "outputs": [{
+                  "name": "",
+                  "type": "bool"
+              }],
+              "type": "function"
+          },
+          {
+            "constant": true,
+            "inputs": [
+              {
+                "name": "_owner",
+                "type": "address"
+              }
+            ],
+            "name": "balanceOf",
+            "outputs": [
+              {
+                "name": "balance",
+                "type": "uint256"
+              }
+            ],
+            "payable": false,
+            "type": "function"
+          }
+      ];
+      var myContract = new web3.eth.Contract(minABI, tokenAddress, { from: fromAddress });
+        var contractInstance = myContract.address;
+        var result = myContract.methods.balanceOf(fromAddress).call().then(function (result) {
+            $("#blnce").text(result/1000);
+        });
+    });
+    </script>
+</body>
+
+</html>

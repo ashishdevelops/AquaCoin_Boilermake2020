@@ -1,0 +1,104 @@
+body{
+	background-color: rgb(248,248,250);
+}
+
+@font-face {
+    font-family: ag;
+    src: url('font.TTF');
+}
+
+.snav {
+    background-color: rgb(36, 52, 75);
+    height: 100vh;
+    box-shadow: 4px 4px 4px #aaaaaa;
+    position: fixed;
+}
+
+.snav-ind {
+    width: 40%;
+    margin-left: 30%;
+    margin-top: 5%;
+}
+
+.snav-name {
+    color: white;
+    text-align: center;
+    font-family: Calibri Light;
+    font-size: 150%;
+}
+
+.snav-btn {
+    width: 100%;
+    margin: none;
+    text-align: left;
+    background-color: rgb(23, 40, 68);
+    font-size: 140%;
+    margin-top: 5px;
+    box-shadow: none;
+    height: 7%;
+    line-height: 250%;
+}
+
+.snav-btn:hover {
+    background-color: rgb(43, 60, 88);
+}
+
+.snav-coins {
+    width: 100%;
+    margin: none;
+    text-align: left;
+    background-color: #117864;
+    font-size: 140%;
+    margin-top: 5px;
+    box-shadow: none;
+    height: 7%;
+    line-height: 250%;
+}
+.snav-coins:hover {
+    background-color: #117864;
+}
+.snav-btn-logo {
+    height: 60%;
+    margin-top: 6%;
+    margin-right: 25px;
+}
+
+.ag {
+    font-family: ag;
+}
+
+.snav-bottom{
+	margin-top: 90%;
+    color: rgb(100,122,154);
+    text-align: center;
+    font-size: 200%;
+}
+
+.mn-table{
+	background-color: white;
+	width: 95%;
+	height: 95%;
+	margin-left: 2.5%;
+	margin-top: 2.5%;
+	text-indent: 20px;
+	line-height: 200%;
+}
+
+.mn-logo{
+	height: 5%;
+	margin-top: 2%;
+}
+
+.mn-btn {
+    margin: none;
+    text-align: left;
+    background-color: rgb(36, 52, 75);
+    font-size: 140%;
+    margin-top: 5px;
+    box-shadow: none;
+
+}
+
+.mn-btn:hover {
+    background-color: rgb(43, 60, 88);
+}
