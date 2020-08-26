@@ -1,4 +1,6 @@
 # AquaCoin_Boilermake2020
+![Image of our frontend]
+(https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/000/919/688/datas/gallery.jpg)
 
 Original DevPost: https://devpost.com/software/aquacoin
 
