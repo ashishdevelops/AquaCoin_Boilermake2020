@@ -1,5 +1,10 @@
 # AquaCoin_Boilermake2020
 
+Original DevPost: https://devpost.com/software/aquacoin
+
+## How to Run
+run the web.py script to launch the server and get a metamask wallet. Then interact with the website!
+
 ## Inspiration
 We wanted to not only build great tech, but also solve a real social problem like water sustainability. The best way to tackle water sustainability goals is to leverage the free market with government authority. Our application/coin was inspired by current discussions about Carbon Credits (a method to discourage air pollution by corporate actors). We wanted to put a price on water wastage and pollution
 
