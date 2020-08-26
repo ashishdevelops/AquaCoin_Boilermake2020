@@ -1,6 +1,5 @@
 # AquaCoin_Boilermake2020
-![Image of our frontend]
-(https://github.com/ashishdevelops/AquaCoin_Boilermake2020/preview.png)
+![Image of our frontend](preview.png)
 
 Original DevPost: https://devpost.com/software/aquacoin
 
