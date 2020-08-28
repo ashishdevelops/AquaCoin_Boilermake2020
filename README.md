@@ -1,4 +1,4 @@
-# AquaCoin_Boilermake2020
+# AquaCoin
 ![Image of our frontend](preview.png)
 
 Original DevPost: https://devpost.com/software/aquacoin
