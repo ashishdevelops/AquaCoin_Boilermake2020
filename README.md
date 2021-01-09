@@ -1,5 +1,8 @@
 # AquaCoin
 ## Like Coinbase, but for the blockchain revolution for conservation!
+
+Team: [Ashish Patel](https://github.com/ashishdevelops), [Hemkesh Agrawal](https://github.com/Hemkesh), [Aiden](https://github.com/Versalys), [Joseph Stafford](https://github.com/Warblish)
+
 ![Logo](AquaCoin.png)
 
 ![Image of our frontend](preview.png)
