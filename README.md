@@ -1,4 +1,8 @@
 # AquaCoin
+![Logo](AquaCoin.png)
+
+
+
 ![Image of our frontend](preview.png)
 
 Original DevPost: https://devpost.com/software/aquacoin
