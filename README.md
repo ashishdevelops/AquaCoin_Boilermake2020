@@ -1,11 +1,15 @@
 # AquaCoin
+## Like Coinbase, but for the blockchain revolution for conservation!
 ![Logo](AquaCoin.png)
-
-
 
 ![Image of our frontend](preview.png)
 
 Original DevPost: https://devpost.com/software/aquacoin
+
+## Technologies
+<b>Crypto:</b> BlockChain, Ethereum, Metamask
+
+<b>Web:</b> JavaScript, JQuery, Firebase, Flask, HTML/CSS
 
 ## How to Run
 Get a metamask wallet and get issued some aqua coin
